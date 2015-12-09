@@ -1,0 +1,38 @@
+<script>
+var resultA, resultB;
+
+resultA = doIt(6);
+
+function setResultB(val) {
+	resultB = val;
+}
+
+function doIt(seed) {
+	var timeoutA, timeoutB;
+
+	timeoutA = setTimeout(function() {
+		seed /= 4;
+
+		setResultB(seed);
+		return seed;
+	}, 0);
+
+	timeoutB = setTimeout(function() {
+		seed *= 4;
+
+		clearTimeout(timeoutA);
+
+		setResultB(seed);
+		return seed;
+	}, 0);
+
+	clearTimeout(timeoutB);
+
+	seed += 2;
+
+	setResultB(seed);
+	return seed;
+}
+alert(resultA);
+alert(resultB);
+</script>
